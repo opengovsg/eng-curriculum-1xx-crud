@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 
 import type { DynamicLayoutProps } from '~/types/nextjs'
 import { getSession } from '~/server/session'
+import { EnvBanner } from '../_components/env-banner'
 import { VersionCheckWrapper } from '../_components/version-check-wrapper'
 
 export default async function AuthedLayout({ children }: DynamicLayoutProps) {
@@ -16,6 +17,7 @@ export default async function AuthedLayout({ children }: DynamicLayoutProps) {
 
   return (
     <main className="flex min-h-dvh flex-col">
+      <EnvBanner />
       <VersionCheckWrapper />
       {children}
     </main>
