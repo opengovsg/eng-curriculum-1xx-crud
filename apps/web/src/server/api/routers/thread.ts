@@ -19,6 +19,11 @@ export const threadRouter = createTRPCRouter({
               name: true,
             },
           },
+          _count: {
+            select: {
+              comments: true,
+            },
+          },
         },
         // cursor: cursor ? { createdAt:  } : undefined,
         orderBy: {
