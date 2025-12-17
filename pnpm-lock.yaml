@@ -396,6 +396,9 @@ importers:
       kysely:
         specifier: ^0.28.8
         version: 0.28.8
+      lodash-es:
+        specifier: ^4.17.21
+        version: 4.17.21
       pg:
         specifier: ^8.16.3
         version: 8.16.3
@@ -415,6 +418,9 @@ importers:
       '@acme/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
+      '@types/lodash-es':
+        specifier: ^4.17.12
+        version: 4.17.12
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.1
