@@ -4,3 +4,7 @@ export const createThreadInputSchema = z.object({
   title: z.string().min(1).max(255),
   content: z.string().min(1).max(5000),
 })
+
+export const getThreadByIdSchema = z.object({
+  id: z.cuid(),
+})
