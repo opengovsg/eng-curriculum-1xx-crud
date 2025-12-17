@@ -78,7 +78,7 @@ export const LandingPageComponent = ({
         </div>
       </LandingSection>
       <LandingSection className="bg-base-canvas-brand-subtle">
-        <div className="flex flex-col items-center gap-6 py-14 md:gap-12 md:py-[5.5rem] lg:flex-row lg:gap-[7.5rem]">
+        <div className="flex flex-col items-center gap-6 py-14 md:gap-12 md:py-22 lg:flex-row lg:gap-30">
           <div className="flex flex-1 flex-col gap-4">
             <SectionHeader>Another call to action</SectionHeader>
             <SectionBody>

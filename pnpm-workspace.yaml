@@ -18,8 +18,8 @@ catalog:
 
 catalogs:
   oui:
-    '@opengovsg/oui': 0.0.23
-    '@opengovsg/oui-theme': 0.0.23
+    '@opengovsg/oui': 0.0.31
+    '@opengovsg/oui-theme': 0.0.31
   prisma:
     '@prisma/adapter-pg': ^7.0.0
     '@prisma/client': ^7.0.0
@@ -71,6 +71,7 @@ minimumReleaseAgeExclude:
   - '@next/eslint-plugin-next'
   - react
   - react-dom
+  - '@opengovsg/*'
 
 onlyBuiltDependencies:
   - '@prisma/client'
