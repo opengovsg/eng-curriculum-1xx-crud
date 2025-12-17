@@ -23,7 +23,7 @@ export const LandingPageComponent = ({
   isAuthed,
   appName,
 }: LandingPageComponentProps) => {
-  const ctaLink = isAuthed ? '/admin' : '/sign-in'
+  const ctaLink = isAuthed ? '/dashboard' : '/sign-in'
 
   return (
     <div className="flex flex-1 flex-col">
