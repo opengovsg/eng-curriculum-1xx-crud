@@ -9,6 +9,9 @@ catalogs:
     '@eslint/js':
       specifier: ^9.39.1
       version: 9.39.1
+    '@hookform/resolvers':
+      specifier: ^5.2.2
+      version: 5.2.2
     '@types/node':
       specifier: ^24.10.1
       version: 24.10.1
@@ -31,8 +34,8 @@ catalogs:
       specifier: 1.13.0
       version: 1.13.0
     react-hook-form:
-      specifier: ^7.67.0
-      version: 7.66.0
+      specifier: ^7.68.0
+      version: 7.68.0
     typescript:
       specifier: ^5.9.3
       version: 5.9.3
@@ -182,6 +185,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@acme/common':
+        specifier: workspace:*
+        version: link:../../packages/common
       '@acme/db':
         specifier: workspace:*
         version: link:../../packages/db
@@ -192,8 +198,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/validators
       '@hookform/resolvers':
-        specifier: ^5.2.2
-        version: 5.2.2(react-hook-form@7.66.0(react@19.2.1))
+        specifier: 'catalog:'
+        version: 5.2.2(react-hook-form@7.68.0(react@19.2.1))
       '@opengovsg/oui':
         specifier: catalog:oui
         version: 0.0.31(@opengovsg/oui-theme@0.0.31(react@19.2.1)(tailwind-variants@3.1.1(tailwind-merge@3.4.0)(tailwindcss@4.1.17))(tailwindcss@4.1.17)(vite@7.2.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0)(yaml@2.8.2)))(motion@12.23.22(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-aria-components@1.13.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -253,7 +259,7 @@ importers:
         version: 19.2.1(react@19.2.1)
       react-hook-form:
         specifier: 'catalog:'
-        version: 7.66.0(react@19.2.1)
+        version: 7.68.0(react@19.2.1)
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.2.1)
@@ -379,6 +385,34 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(typescript@5.9.3)(vitest@4.0.8)
 
+  packages/common:
+    dependencies:
+      '@date-fns/tz':
+        specifier: ^1.4.1
+        version: 1.4.1
+      date-fns:
+        specifier: ^4.1.0
+        version: 4.1.0
+    devDependencies:
+      '@acme/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@acme/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
+      '@acme/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/typescript
+      eslint:
+        specifier: 'catalog:'
+        version: 9.39.1(jiti@2.6.1)
+      prettier:
+        specifier: 'catalog:'
+        version: 3.6.2
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
   packages/db:
     dependencies:
       '@prisma/adapter-pg':
@@ -449,8 +483,8 @@ importers:
   packages/ui:
     dependencies:
       '@hookform/resolvers':
-        specifier: ^5.2.2
-        version: 5.2.2(react-hook-form@7.66.0(react@19.2.1))
+        specifier: 'catalog:'
+        version: 5.2.2(react-hook-form@7.68.0(react@19.2.1))
       '@opengovsg/oui':
         specifier: catalog:oui
         version: 0.0.31(@opengovsg/oui-theme@0.0.31(react@19.2.1)(tailwind-variants@3.1.1(tailwind-merge@3.4.0)(tailwindcss@4.1.17))(tailwindcss@4.1.17)(vite@7.2.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0)(yaml@2.8.2)))(motion@12.23.22(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-aria-components@1.13.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -465,7 +499,7 @@ importers:
         version: 1.13.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       react-hook-form:
         specifier: 'catalog:'
-        version: 7.66.0(react@19.2.1)
+        version: 7.68.0(react@19.2.1)
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.2.1)
@@ -772,6 +806,9 @@ packages:
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
+
+  '@date-fns/tz@1.4.1':
+    resolution: {integrity: sha512-P5LUNhtbj6YfI3iJjw5EL9eUAG6OitD0W3fWQcpQjDRc/QIsL0tRNuO1PcDvPccWL1fSTXXdE1ds+l95DV/OFA==}
 
   '@electric-sql/pglite-socket@0.0.6':
     resolution: {integrity: sha512-6RjmgzphIHIBA4NrMGJsjNWK4pu+bCWJlEWlwcxFTVY3WT86dFpKwbZaGWZV6C5Rd7sCk1Z0CI76QEfukLAUXw==}
@@ -5704,8 +5741,8 @@ packages:
     peerDependencies:
       react: '>= 16.8 || 18.0.0'
 
-  react-hook-form@7.66.0:
-    resolution: {integrity: sha512-xXBqsWGKrY46ZqaHDo+ZUYiMUgi8suYu5kdrS20EG8KiL7VRQitEbNjm+UcrDYrNi1YLyfpmAeGjCZYXLT9YBw==}
+  react-hook-form@7.68.0:
+    resolution: {integrity: sha512-oNN3fjrZ/Xo40SWlHf1yCjlMK417JxoSJVUXQjGdvdRCU07NTFei1i1f8ApUAts+IVh14e4EdakeLEA+BEAs/Q==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -6898,6 +6935,8 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
+  '@date-fns/tz@1.4.1': {}
+
   '@electric-sql/pglite-socket@0.0.6(@electric-sql/pglite@0.3.2)':
     dependencies:
       '@electric-sql/pglite': 0.3.2
@@ -7170,10 +7209,10 @@ snapshots:
     dependencies:
       hono: 4.7.10
 
-  '@hookform/resolvers@5.2.2(react-hook-form@7.66.0(react@19.2.1))':
+  '@hookform/resolvers@5.2.2(react-hook-form@7.68.0(react@19.2.1))':
     dependencies:
       '@standard-schema/utils': 0.3.0
-      react-hook-form: 7.66.0(react@19.2.1)
+      react-hook-form: 7.68.0(react@19.2.1)
 
   '@humanfs/core@0.19.1': {}
 
@@ -12510,7 +12549,7 @@ snapshots:
       prop-types: 15.8.1
       react: 19.2.1
 
-  react-hook-form@7.66.0(react@19.2.1):
+  react-hook-form@7.68.0(react@19.2.1):
     dependencies:
       react: 19.2.1
 

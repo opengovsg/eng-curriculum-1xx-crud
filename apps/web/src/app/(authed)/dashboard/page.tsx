@@ -1,10 +1,14 @@
-import { LogoutButton } from '~/app/_components/logout-button'
+import { prefetch, trpc } from '~/trpc/server'
+import { AddThreadModal } from './_components/add-thread-modal'
+import { ThreadsList } from './_components/threads-list'
 
-export default function TestPage() {
+export default async function DashboardPage() {
+  await prefetch(trpc.thread.getAll.infiniteQueryOptions({}))
+
   return (
-    <div>
-      Admin page. You should only be able to see this if you are auth'd
-      <LogoutButton />
+    <div className="container mx-auto flex flex-col gap-4 p-4">
+      <AddThreadModal />
+      <ThreadsList />
     </div>
   )
 }
