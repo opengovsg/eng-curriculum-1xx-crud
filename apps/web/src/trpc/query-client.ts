@@ -1,8 +1,7 @@
+import { toast } from '@opengovsg/oui/toast'
 import { defaultShouldDehydrateQuery, QueryClient } from '@tanstack/react-query'
 import { isTRPCClientError } from '@trpc/client'
 import SuperJSON from 'superjson'
-
-import { toast } from '@acme/ui/toast'
 
 import { trpcHandleableErrorCodeSchema } from '~/validators/trpc'
 
