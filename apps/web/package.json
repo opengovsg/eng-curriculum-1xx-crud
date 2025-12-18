@@ -6,7 +6,7 @@
     "build": "pnpm with-env next build",
     "vercel-build": "pnpm with-env next build",
     "clean": "git clean -xdf .cache .next .turbo node_modules",
-    "dev": "pnpm with-env next dev --turbopack",
+    "dev": "pnpm with-env next dev --turbopack --port 3001",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "start": "pnpm with-env next start",
@@ -18,10 +18,11 @@
     "build-storybook": "CI=1 storybook build"
   },
   "dependencies": {
+    "@acme/common": "workspace:*",
     "@acme/db": "workspace:*",
     "@acme/ui": "workspace:*",
     "@acme/validators": "workspace:*",
-    "@hookform/resolvers": "^5.2.2",
+    "@hookform/resolvers": "catalog:",
     "@opengovsg/oui": "catalog:oui",
     "@opengovsg/oui-theme": "catalog:oui",
     "@t3-oss/env-nextjs": "^0.13.8",

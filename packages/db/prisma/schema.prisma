@@ -42,6 +42,13 @@ model User {
   email    String    @unique
   image    String?
   accounts Account[]
+
+  isEnabled Boolean @default(true)
+
+  lastLoginAt DateTime?
+
+  threads  Thread[]
+  comments Comment[]
 }
 
 model Account {
@@ -54,4 +61,34 @@ model Account {
 
   @@unique([provider, providerAccountId])
   @@index([userId])
+}
+
+model Thread {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  comments Comment[]
+
+  deletedAt DateTime?
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  threadId String
+  thread   Thread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+
+  deletedAt DateTime?
 }
