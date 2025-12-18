@@ -206,7 +206,7 @@ describe('auth.service', () => {
       const token = '123456'
 
       await expect(emailVerifyOtp({ email, token, nonce })).rejects.toThrow(
-        'Invalid login email or missing nonce',
+        'Token is invalid or has expired',
       )
     })
 
@@ -237,7 +237,7 @@ describe('auth.service', () => {
 
       // Second verification with same token should fail
       await expect(emailVerifyOtp({ email, token, nonce })).rejects.toThrow(
-        'Invalid login email or missing nonce',
+        'Token is invalid or has expired',
       )
     })
 
@@ -251,7 +251,7 @@ describe('auth.service', () => {
       // Try to verify with wrong nonce
       await expect(
         emailVerifyOtp({ email, token, nonce: nonce2 }),
-      ).rejects.toThrow('Invalid login email or missing nonce')
+      ).rejects.toThrow('Token is invalid or has expired')
 
       // Original token should still exist
       const vfnIdentifier1 = createVfnIdentifier({ email, nonce: nonce1 })
