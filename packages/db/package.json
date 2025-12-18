@@ -10,6 +10,10 @@
       "types": "./dist/src/index.d.ts",
       "default": "./src/index.ts"
     },
+    "./extensions": {
+      "types": "./dist/src/extensions.d.ts",
+      "default": "./src/extensions.ts"
+    },
     "./browser": {
       "types": "./dist/src/browser.d.ts",
       "default": "./src/browser.ts"
