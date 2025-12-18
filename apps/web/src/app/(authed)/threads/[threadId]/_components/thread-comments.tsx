@@ -5,6 +5,8 @@ import { Button } from '@opengovsg/oui'
 import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { fmtDateTime } from '@acme/common/format'
+import { EmptyPlaceholder } from '@acme/ui/empty-placeholder'
+import { EmptyGenericSvg } from '@acme/ui/svgs'
 
 import { useTRPC } from '~/trpc/react'
 
@@ -38,18 +40,29 @@ export const ThreadComments = ({ id }: ThreadCommentsProps) => {
     })
   }, [data])
 
+  if (uniqueComments.length === 0) {
+    return (
+      <EmptyPlaceholder
+        svg={<EmptyGenericSvg />}
+        size="lg"
+        title="No comments found"
+        description="Add a comment to start the discussion."
+      />
+    )
+  }
+
   return (
-    <div className="flex flex-col gap-2">
+    <div className="text-base-content-default flex flex-col gap-2">
       {uniqueComments.map((comment) => (
         <div
           key={comment.id}
           className="flex flex-col gap-0.5 rounded-sm bg-white px-6 py-3 shadow-sm"
         >
-          <div className="flex w-full flex-row items-center justify-between">
-            <span className="prose-caption-1">
+          <div className="flex w-full flex-col justify-between gap-1 md:flex-row md:items-center">
+            <span className="prose-caption-1 self-start">
               {comment.author.name ?? comment.author.email}
             </span>
-            <span className="prose-caption-1">
+            <span className="prose-caption-1 text-base-content-medium self-end">
               {fmtDateTime(comment.createdAt)}
             </span>
           </div>

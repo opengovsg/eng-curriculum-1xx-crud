@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { Button } from '@opengovsg/oui'
 import { useInfiniteQuery } from '@tanstack/react-query'
 
+import { EmptyPlaceholder } from '@acme/ui/empty-placeholder'
+
 import { useTRPC } from '~/trpc/react'
 import { ThreadCard } from '../../_components/thread-card'
 
@@ -17,6 +19,16 @@ export const ThreadsList = () => {
       },
     ),
   )
+
+  if (data?.pages[0]?.threads.length === 0) {
+    // TODO: Update the title and description based on user role in the future
+    return (
+      <EmptyPlaceholder
+        title="No threads yet"
+        description="Create a new thread to get started!"
+      />
+    )
+  }
 
   return (
     <div className="flex flex-col gap-6">

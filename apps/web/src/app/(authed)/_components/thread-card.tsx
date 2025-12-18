@@ -14,15 +14,17 @@ export const ThreadCard = ({ thread, className }: ThreadCardProps) => {
   return (
     <div
       className={cn(
-        'border-interaction-success-default flex w-full flex-col gap-2 rounded-lg border-l-8 bg-white px-6 py-3 shadow-sm',
+        'border-interaction-success-default text-base-content-default flex w-full flex-col gap-2 rounded-lg border-l-8 bg-white px-6 py-3 shadow-sm',
         className,
       )}
     >
-      <div className="flex w-full flex-row items-center justify-between">
-        <span className="prose-caption-1">
+      <div className="flex w-full flex-col justify-between gap-1 md:flex-row md:items-center">
+        <span className="prose-caption-1 self-start">
           By {thread.author.name ?? thread.author.email}
         </span>
-        <span className="prose-caption-1">{fmtDateTime(thread.updatedAt)}</span>
+        <span className="prose-caption-1 text-base-content-medium self-end">
+          {fmtDateTime(thread.updatedAt)}
+        </span>
       </div>
       <div className="flex w-full flex-col gap-2">
         <span className="prose-subhead-1">{thread.title}</span>
