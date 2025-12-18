@@ -9,5 +9,8 @@ export const getCommentsByThreadIdSchema = offsetPaginationSchema.extend({
 
 export const createCommentInputSchema = z.object({
   threadId: getThreadByIdSchema.shape.id,
-  content: z.string().min(1).max(5000),
+  content: z
+    .string()
+    .min(1, { message: 'Content is required' })
+    .max(5000, { message: 'Content must be at most 5000 characters' }),
 })
