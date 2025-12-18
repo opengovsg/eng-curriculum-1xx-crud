@@ -13,7 +13,7 @@ import {
   TextField,
   toast,
 } from '@opengovsg/oui'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { DialogTrigger } from 'react-aria-components'
 import { Controller, useForm } from 'react-hook-form'
 import { BiPlus } from 'react-icons/bi'
@@ -32,11 +32,15 @@ export const AddThreadModal = () => {
 
   const router = useRouter()
 
+  const queryClient = useQueryClient()
   const trpc = useTRPC()
   const createThreadMutation = useMutation(
     trpc.thread.create.mutationOptions({
       onSuccess: ({ id }) => {
         toast.success('Thread created successfully')
+        void queryClient.invalidateQueries({
+          queryKey: trpc.thread.getAll.infiniteQueryKey(),
+        })
         router.push(`/threads/${id}`)
       },
     }),

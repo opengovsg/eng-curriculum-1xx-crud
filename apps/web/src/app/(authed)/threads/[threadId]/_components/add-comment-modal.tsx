@@ -77,7 +77,10 @@ export const AddCommentModal = ({ threadId }: { threadId: string }) => {
           },
         )
 
-        // Not updating root comments list as some desynchronisation is acceptable there
+        // Sometimes it's necessary to invalidate queries as the efficiency gains may not be worth the readability hit
+        void queryClient.invalidateQueries({
+          queryKey: trpc.thread.getAll.infiniteQueryKey(),
+        })
       },
     }),
   )
