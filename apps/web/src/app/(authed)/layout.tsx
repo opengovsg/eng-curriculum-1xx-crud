@@ -24,7 +24,9 @@ export default async function AuthedLayout({ children }: DynamicLayoutProps) {
         <EnvBanner />
         <VersionCheckWrapper />
         <AuthedNavbar />
-        {children}
+        <div className="container mx-auto flex flex-col gap-4 p-4">
+          {children}
+        </div>
       </main>
     </HydrateClient>
   )

@@ -5,6 +5,12 @@ export const defaultThreadSelect = {
   author: {
     select: {
       name: true,
+      email: true,
+    },
+  },
+  _count: {
+    select: {
+      comments: true,
     },
   },
   updatedAt: true,

@@ -1,6 +1,7 @@
 import { meRouter } from '~/server/api/routers/me'
 import { createTRPCRouter, publicProcedure } from '~/server/api/trpc'
 import { authRouter } from './routers/auth/auth.router'
+import { commentRouter } from './routers/comment'
 import { threadRouter } from './routers/thread'
 
 /**
@@ -13,6 +14,7 @@ export const appRouter = createTRPCRouter({
   me: meRouter,
   auth: authRouter,
   thread: threadRouter,
+  comment: commentRouter,
 })
 
 // export type definition of API

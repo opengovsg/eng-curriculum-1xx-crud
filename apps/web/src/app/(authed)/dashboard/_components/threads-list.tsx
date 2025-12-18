@@ -1,10 +1,11 @@
 'use client'
 
+import Link from 'next/link'
 import { Button } from '@opengovsg/oui'
 import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { useTRPC } from '~/trpc/react'
-import { ThreadCard } from './thread-card'
+import { ThreadCard } from '../../_components/thread-card'
 
 export const ThreadsList = () => {
   const trpc = useTRPC()
@@ -23,7 +24,12 @@ export const ThreadsList = () => {
         {data?.pages.map((page) =>
           page.threads.map((thread) => (
             <li key={thread.id}>
-              <ThreadCard thread={thread} />
+              <Link href={`/threads/${thread.id}`} className="w-full">
+                <ThreadCard
+                  className="cursor-pointer hover:bg-neutral-50"
+                  thread={thread}
+                />
+              </Link>
             </li>
           )),
         )}

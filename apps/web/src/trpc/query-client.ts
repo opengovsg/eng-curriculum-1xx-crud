@@ -30,7 +30,7 @@ export const createQueryClient = () =>
               }
 
               if (code === 'UNAUTHORIZED') {
-                window.location.href = '/login'
+                window.location.href = '/sign-in'
                 return
               }
 

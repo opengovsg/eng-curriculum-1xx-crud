@@ -25,20 +25,13 @@ export const getAllThreadsWithPagination = async ({
   page = 1,
   limit = 5,
 }: {
-  page?: number
-  limit?: number
+  page: number | undefined
+  limit: number | undefined
 }) => {
   const threads = await db.thread.findMany({
     take: limit + 1, // get an extra item at the end to use as next cursor
     skip: (page - 1) * limit,
-    select: {
-      ...defaultThreadSelect,
-      _count: {
-        select: {
-          comments: true,
-        },
-      },
-    },
+    select: defaultThreadSelect,
     orderBy: {
       createdAt: 'desc',
     },
