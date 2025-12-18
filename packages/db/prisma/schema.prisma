@@ -75,8 +75,7 @@ model Thread {
 
   comments Comment[]
 
-  deletedAt   DateTime?
-  attachments Attachment[]
+  deletedAt DateTime?
 }
 
 model Comment {
@@ -90,20 +89,6 @@ model Comment {
 
   threadId String
   thread   Thread @relation(fields: [threadId], references: [id], onDelete: Cascade)
-
-  deletedAt DateTime?
-}
-
-model Attachment {
-  id          String @id @default(cuid())
-  objectKey   String // S3 object key
-  sizeInBytes BigInt
-  extension   String
-
-  createdAt DateTime @default(now())
-
-  threadId String?
-  thread   Thread? @relation(fields: [threadId], references: [id], onDelete: Cascade)
 
   deletedAt DateTime?
 }
