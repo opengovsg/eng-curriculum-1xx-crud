@@ -8,6 +8,7 @@ export const defaultCommentSelect = {
     select: {
       id: true,
       name: true,
+      email: true,
     },
   },
 } satisfies Prisma.CommentSelect

@@ -35,3 +35,24 @@ export const getCommentsByThreadIdWithPagination = async ({
     nextCursor,
   }
 }
+
+export const createComment = async ({
+  authorId,
+  threadId,
+  content,
+}: {
+  authorId: string
+  threadId: string
+  content: string
+}) => {
+  const comment = await db.comment.create({
+    data: {
+      authorId,
+      threadId,
+      content,
+    },
+    select: defaultCommentSelect,
+  })
+
+  return comment
+}
