@@ -24,9 +24,14 @@ export default async function ThreadPage({
   }
 
   await prefetch(
-    trpc.comment.getCommentsByThreadId.infiniteQueryOptions({
-      threadId,
-    }),
+    trpc.comment.getCommentsByThreadId.infiniteQueryOptions(
+      {
+        threadId,
+      },
+      {
+        getNextPageParam: (lastPage) => lastPage.nextCursor,
+      },
+    ),
   )
 
   return (
