@@ -3,7 +3,14 @@ import { AddThreadModal } from './_components/add-thread-modal'
 import { ThreadsList } from './_components/threads-list'
 
 export default async function DashboardPage() {
-  await prefetch(trpc.thread.getAll.infiniteQueryOptions({}))
+  await prefetch(
+    trpc.thread.getAll.infiniteQueryOptions(
+      {},
+      {
+        getNextPageParam: (lastPage) => lastPage.nextCursor,
+      },
+    ),
+  )
 
   return (
     <>
